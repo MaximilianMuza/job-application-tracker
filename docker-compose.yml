@@ -1,0 +1,27 @@
+services:
+  # job-tracker:
+  #   container_name: job-tracker
+  #   build: 
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 8050:8050
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - application-database
+
+  application-database:
+    container_name: application-database
+    image: mongo:6.0.3
+    ports:
+      - 27017:27017
+    volumes:
+      - application-database:/data/db
+    restart: unless-stopped
+
+volumes:
+  application-database:
+
+networks:
+  default:
+    name: job-tracker-network

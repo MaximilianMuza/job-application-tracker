@@ -1,0 +1,7 @@
+.venv
+.venv/
+.env
+.nicegui
+.nicegui/
+__pycache__
+__pycache__/
