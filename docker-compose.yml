@@ -1,14 +1,17 @@
 services:
-  # job-tracker:
-  #   container_name: job-tracker
-  #   build: 
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - 8050:8050
-  #   restart: unless-stopped
-  #   depends_on:
-  #     - application-database
+  job-tracker:
+    container_name: job-tracker
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8050:8050
+    environment:
+      - MONGODB_DATABASE=${MONGODB_DATABASE}
+      - MONGODB_HOST=${MONGODB_HOST}
+      - MONGODB_PORT=${MONGODB_PORT}
+      - SECRET_KEY=${SECRET_KEY}
+    restart: unless-stopped
 
   application-database:
     container_name: application-database

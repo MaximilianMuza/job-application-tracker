@@ -10,7 +10,6 @@ COPY . .
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt && \
     rm requirements.txt
-RUN pip install .
 
 EXPOSE 8050
 
