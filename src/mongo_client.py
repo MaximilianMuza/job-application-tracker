@@ -8,18 +8,16 @@ logger = logging.Logger(__name__)
 
 class MongoDBClient(ABC):
     """Base MongoDB class to connect to an mongo database"""
-    def __init__(self, host: str, port: str, database: str) -> None:
-        self.host = host
-        self.port = port
+    def __init__(self, host: str, port: int, database: str):
         self.database = database
         self.client = MongoClient(
-            host=self.host,
-            port=int(self.port),
+            host=host,
+            port=port,
             uuidRepresentation='pythonLegacy'
         )
         self.connect()
 
-    def connect(self) -> None:
+    def connect(self):
         """Check if client is connected to database"""
         try:
             self.client.server_info()
@@ -33,17 +31,16 @@ class MongoDBClient(ABC):
         Args:
             collection (str): Name of the wanted collection
         """
-        if self.database in self.client.list_database_names():
-            db = self.client[self.database]
-            if collection in db.list_collection_names():
-                col = db[collection]
-                return col
+        db = self.client[self.database]
+        if collection in db.list_collection_names():
+            col = db[collection]
+            return col
         logging.error("No database %s with collection %s found...", self.database, collection)
         return None
 
 class UserDBClient(MongoDBClient):
     """User DB Client to connect to an user database."""
-    def __init__(self, host: str, port: str, database: str) -> None:
+    def __init__(self, host: str, port: str, database: str):
         super().__init__(host, port, database)
         self.users_collection = self.get_collection("users")
 

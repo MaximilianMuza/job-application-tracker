@@ -50,7 +50,7 @@ class Authenticator:
         self.user_db_client.insert_user(username, hashed_password)
         return True
 
-    def is_authenticated(self):
+    def is_authenticated(self) -> bool:
         """Checks whether the user is currently authenticated.
 
         Returns:

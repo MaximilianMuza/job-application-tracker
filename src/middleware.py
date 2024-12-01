@@ -1,4 +1,5 @@
 # src/middleware.py
+from asyncio import coroutine
 from nicegui import app
 from fastapi import Request
 from fastapi.responses import RedirectResponse
@@ -23,7 +24,7 @@ class AuthMiddleware(BaseHTTPMiddleware):
         super().__init__(app)
         self.authenticator = authenticator
 
-    async def dispatch(self, request: Request, call_next):
+    async def dispatch(self, request: Request, call_next) -> coroutine:
         """Intercepts the request to check if the user is authenticated. If not authenticated,
         the user will be redirected to the login page.
 

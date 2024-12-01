@@ -1,7 +1,7 @@
 # src/main.py
 import os
 from nicegui import ui, app
-from mongo_client import MongoDBClient
+from mongo_client import UserDBClient
 from authenticator import Authenticator
 from middleware import AuthMiddleware
 from pages.login_page import login_page
@@ -12,7 +12,7 @@ USERDB_DATABASE = os.environ.get("USERDB_DATABASE", "job_tracker")
 USERDB_HOST = os.environ.get("USERDB_HOST", "application-database")
 USERDB_PORT= int(os.environ.get("USERDB_PORT", "27017"))
 
-user_db_client = MongoDBClient(USERDB_HOST, USERDB_PORT, USERDB_DATABASE)
+user_db_client = UserDBClient(USERDB_HOST, USERDB_PORT, USERDB_DATABASE)
 
 authenticator = Authenticator(user_db_client)
 app.add_middleware(AuthMiddleware, authenticator=authenticator)
