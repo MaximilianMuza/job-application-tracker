@@ -53,7 +53,7 @@ python src/app.py
 ```
 The application will be available at http://localhost:8080.
 
-Or run the app using docker comose:
+Or run the app using docker compose:
 ```bash
 docker-compose -f docker/docker-compose.yml up -d
 ```
