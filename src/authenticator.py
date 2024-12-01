@@ -45,7 +45,7 @@ class Authenticator:
             bool: `True` if the registration is successful, `False` if the username already exists.
         """
         if self.user_db_client.find_user(username):
-            return False  # Username already exists
+            return False
         hashed_password = generate_password_hash(password)
         self.user_db_client.insert_user(username, hashed_password)
         return True

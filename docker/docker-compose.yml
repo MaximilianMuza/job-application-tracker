@@ -10,7 +10,7 @@ services:
       - USERDB_DATABASE=${USERDB_DATABASE}
       - USERDB_HOST=${USERDB_HOST}
       - USERDB_PORT=${USERDB_PORT}
-      - SECRET_KEY=${SECRET_KEY}
+      - APP_SECRET=${APP_SECRET}
     volumes:
       - ./../src:/usr/src/app/src
     restart: unless-stopped
