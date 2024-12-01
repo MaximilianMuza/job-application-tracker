@@ -1,8 +1,7 @@
-# FROM python:3.10
 FROM python:3.10.3-slim-buster
 
 WORKDIR /usr/src/app
-# install packages
+
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 
