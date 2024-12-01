@@ -7,10 +7,12 @@ services:
     ports:
       - 8050:8050
     environment:
-      - MONGODB_DATABASE=${MONGODB_DATABASE}
-      - MONGODB_HOST=${MONGODB_HOST}
-      - MONGODB_PORT=${MONGODB_PORT}
+      - USERDB_DATABASE=${USERDB_DATABASE}
+      - USERDB_HOST=${USERDB_HOST}
+      - USERDB_PORT=${USERDB_PORT}
       - SECRET_KEY=${SECRET_KEY}
+    volumes:
+      - ./src:/usr/src/app/src
     restart: unless-stopped
 
   application-database:
