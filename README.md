@@ -29,7 +29,7 @@ docker-compose.yml           # Docker Compose configuration
 ```
 ## Requirements
 
-- Python 3.10
+- Python 3.10+
 - Docker and Docker Compose
 
 ## Installation
