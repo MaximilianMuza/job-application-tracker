@@ -1,6 +1,6 @@
 services:
-  job-tracker:
-    container_name: job-tracker
+  job-tracker-app:
+    container_name: job-tracker-app
     build: 
       context: .
       dockerfile: Dockerfile
@@ -15,8 +15,8 @@ services:
       - ./src:/usr/src/app/src
     restart: unless-stopped
 
-  application-database:
-    container_name: application-database
+  job-tracker-db:
+    container_name: job-tracker-db
     image: mongo:6.0.3
     ports:
       - 27017:27017
