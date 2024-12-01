@@ -15,6 +15,7 @@ A web application built using [NiceGUI](https://nicegui.io/) to track job applic
 src/
 ├── pages/
 │   ├── __init__.py
+│   ├── login_page.py          # Login / register page
 │   ├── main_page.py          # Main application page with header and tabs
 │   ├── tabs/
 │   │   ├── __init__.py
