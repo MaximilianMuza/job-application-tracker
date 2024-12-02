@@ -2,17 +2,17 @@ services:
   job-tracker-app:
     container_name: job-tracker-app
     build: 
-      context: .
-      dockerfile: Dockerfile
+      context: ./../
+      dockerfile: docker/Dockerfile
     ports:
       - 8050:8050
     environment:
       - USERDB_DATABASE=${USERDB_DATABASE}
       - USERDB_HOST=${USERDB_HOST}
       - USERDB_PORT=${USERDB_PORT}
-      - SECRET_KEY=${SECRET_KEY}
+      - APP_SECRET=${APP_SECRET}
     volumes:
-      - ./src:/usr/src/app/src
+      - ./../src:/usr/src/app/src
     restart: unless-stopped
 
   job-tracker-db:
@@ -21,11 +21,11 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - application-database:/data/db
+      - job-tracker-db:/data/db
     restart: unless-stopped
 
 volumes:
-  application-database:
+  job-tracker-db:
 
 networks:
   default:

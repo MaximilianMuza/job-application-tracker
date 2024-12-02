@@ -9,7 +9,7 @@ from pages.main_page import main_page
 
 APP_SECRET = os.environ.get("APP_SECRET", "")
 USERDB_DATABASE = os.environ.get("USERDB_DATABASE", "users_database")
-USERDB_HOST = os.environ.get("USERDB_HOST", "mongo-database")
+USERDB_HOST = os.environ.get("USERDB_HOST", "job-tracker-db")
 USERDB_PORT= int(os.environ.get("USERDB_PORT", "27017"))
 
 user_db_client = UserDBClient(USERDB_HOST, USERDB_PORT, USERDB_DATABASE)
