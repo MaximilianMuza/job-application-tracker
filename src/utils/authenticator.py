@@ -2,7 +2,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from nicegui import app
 
-from mongo_client import UserDBClient
+from .mongo_client import UserDBClient
 
 class Authenticator:
     """Handles user authentication and session management.

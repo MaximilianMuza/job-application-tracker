@@ -1,6 +1,7 @@
 services:
   job-tracker-app:
     container_name: job-tracker-app
+    # image: ghcr.io/maximilianmuza/job-tracker-app:nightly
     build: 
       context: ./../
       dockerfile: docker/Dockerfile
@@ -10,7 +11,11 @@ services:
       - USERDB_DATABASE=${USERDB_DATABASE}
       - USERDB_HOST=${USERDB_HOST}
       - USERDB_PORT=${USERDB_PORT}
+      - APPLICATIONDB_DATABASE=${APPLICATIONDB_DATABASE}
+      - APPLICATIONDB_HOST=${APPLICATIONDB_HOST}
+      - APPLICATIONDB_PORT=${APPLICATIONDB_PORT}
       - APP_SECRET=${APP_SECRET}
+      - APP_NAME=${APP_NAME}
     volumes:
       - ./../src:/usr/src/app/src
     restart: unless-stopped

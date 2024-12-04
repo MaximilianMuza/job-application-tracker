@@ -4,6 +4,8 @@ import logging
 from pymongo import MongoClient, errors
 from pymongo.collection import Collection
 
+from applications import Application
+
 logger = logging.Logger(__name__)
 
 class MongoDBClient(ABC):
@@ -63,3 +65,23 @@ class UserDBClient(MongoDBClient):
             password (str): User password hashed
         """
         self.users_collection.insert_one({"username": username, "password": password})
+
+class ApplicationDBClient(MongoDBClient):
+    """Application DB Client to connect to an application database."""
+    def __init__(self, host: str, port: str, database: str):
+        super().__init__(host, port, database)
+        self.applications_collection = self.get_collection("applications")
+
+    def insert_application(self, application: Application) -> None:
+        """Insert new user.
+        
+        Args:
+            application (Application): Application data
+        """
+        application_dict = application.to_dict()
+        self.applications_collection.insert_one(application_dict)
+
+    def get_applications(self) -> list:
+        """Get all applications."""
+        logging.info(self.applications_collection.find())
+        return self.applications_collection.find()
